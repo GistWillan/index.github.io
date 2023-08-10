@@ -1,0 +1,130 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://iyciy.com/#when",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://hexo-1251213061.cos.ap-beijing.myqcloud.com/x/dorcandy.cur",
+                    "path": "css/dorcandy.cur"
+                },
+                {
+                    "url": "https://hexo-1251213061.cos.ap-beijing.myqcloud.com/x/pointer.cur",
+                    "path": "css/pointer.cur"
+                },
+                {
+                    "url": "https://iyciy.com/img/logo_large.png",
+                    "path": "images/logo_large.png"
+                },
+                {
+                    "url": "https://iyciy.com/img/github.png",
+                    "path": "images/github.png"
+                },
+                {
+                    "url": "https://iyciy.com/img/logo_only.png",
+                    "path": "images/logo_only.png"
+                },
+                {
+                    "url": "https://hexo-1251213061.cos.ap-beijing.myqcloud.com/image/kasa.jpg",
+                    "path": "images/kasa.jpeg"
+                },
+                {
+                    "url": "https://static.runoob.com/images/mix/img_avatar.png",
+                    "path": "images/img_avatar.png"
+                },
+                {
+                    "url": "https://iyciy.com/js/vendor/modernizr-2.7.1.min.js",
+                    "path": "js/modernizr-2.7.1.min.js"
+                },
+                {
+                    "url": "https://cdn.jsdelivr.net/gh/yremp/yremp-js@1.5/sakura.js",
+                    "path": "js/sakura.js"
+                },
+                {
+                    "url": "https://iyciy.com/js/vendor/jquery-1.11.2.min.js",
+                    "path": "js/jquery-1.11.2.min.js"
+                },
+                {
+                    "url": "https://iyciy.com/js/vendor/all.js",
+                    "path": "js/all.js"
+                },
+                {
+                    "url": "https://iyciy.com/js/jquery.downCount.js",
+                    "path": "js/jquery.downCount.js"
+                },
+                {
+                    "url": "https://iyciy.com/js/form_script.js",
+                    "path": "js/form_script.js"
+                },
+                {
+                    "url": "https://iyciy.com/js/main.js",
+                    "path": "js/main.js"
+                },
+                {
+                    "url": "https://iyciy.com/css/normalize.css",
+                    "path": "css/normalize.css"
+                },
+                {
+                    "url": "https://iyciy.com/css/pageloader.css",
+                    "path": "css/pageloader.css"
+                },
+                {
+                    "url": "https://iyciy.com/fonts/opensans/stylesheet.css",
+                    "path": "css/stylesheet.css",
+                    "children": [
+                        {
+                            "url": "https://iyciy.com/fonts/opensans/opensans-light-webfont.woff",
+                            "path": "fonts/opensans-light-webfont.woff"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://iyciy.com/fonts/asap/stylesheet.css",
+                    "path": "css/stylesheet_1.css",
+                    "children": []
+                },
+                {
+                    "url": "https://iyciy.com/css/foundation.min.css",
+                    "path": "css/foundation.min.css"
+                },
+                {
+                    "url": "https://iyciy.com/js/vendor/jquery.fullPage.css",
+                    "path": "css/jquery.fullPage.css"
+                },
+                {
+                    "url": "https://iyciy.com/js/vegas/vegas.min.css",
+                    "path": "css/vegas.min.css",
+                    "children": []
+                },
+                {
+                    "url": "https://iyciy.com/css/main.css",
+                    "path": "css/main.css",
+                    "children": [
+                        {
+                            "url": "https://iyciy.com/img/bg_forest.jpg",
+                            "path": "images/bg_forest.jpg"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://iyciy.com/css/main_responsive.css",
+                    "path": "css/main_responsive.css"
+                },
+                {
+                    "url": "https://iyciy.com/css/style-font1.css",
+                    "path": "css/style-font1.css"
+                }
+            ]
+        }
+    ],
+    "failures": []
+}

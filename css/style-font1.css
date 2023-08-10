@@ -1,0 +1,40 @@
+/* Font customization */
+
+.header-top .menu a,
+.page-footer,
+.quick-link .title,
+.p-footer .text,
+.p-footer .arrow-d,
+.page-footer a,
+.page-cent .content,
+.page-cent .p-title h3,
+.page-cent .p-title h2,
+.page-cent .text,
+.page h2,
+.page h3,
+.page h4,
+.page p,
+.page .content .clock .header,
+.page .clock .text,
+.page .clock .elem-center .digit,
+.page .clock .elem-right .digit,
+.page .clock .elem-left .digit,
+.page .form input,
+.page .form label,
+.c-layout.c-day .number,
+.page .form button,
+.page .form textarea{
+	font-family: 'ZCOOL XiaoWei';
+	letter-spacing: -0.01em;
+}
+
+.c-layout.c-day .metric{
+	font-family: 'Opensans';
+}
+
+.page .clock .elem-center .digit,
+.page .clock .elem-right .digit,
+.page .clock .elem-left .digit
+{
+	letter-spacing: -0.05em;
+}

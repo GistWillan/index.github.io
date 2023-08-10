@@ -1,0 +1,55 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为请求参数，包括不限于网址、请求头、响应头、COOKIE、Referer、UserAgent",
+        " *   本文件仅为记录详细请求参数便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "directory": "iyciy-com-cu6hjaik",
+    "options": {
+        "url": "https://iyciy.com/#when",
+        "index": "index.html",
+        "domain": "iyciy.com",
+        "origin": "https://iyciy.com",
+        "ipaddress": "47.242.225.19",
+        "originURL": "https://iyciy.com/#when",
+        "filenameGenerator": "byType",
+        "request": {
+            "headers": {
+                "accept": "text/html,*/*",
+                "accept-language": "zh-CN,zh;q=0.9",
+                "accept-encoding": "gzip",
+                "cache-control": "no-cache",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+                "x-scraper-website": "https://bazhan.me/"
+            }
+        },
+        "response": {
+            "statusCode": 200,
+            "headers": {
+                "server": "nginx",
+                "date": "Fri, 23 Apr 2021 00:05:01 GMT",
+                "content-type": "text/html",
+                "last-modified": "Thu, 22 Apr 2021 16:51:10 GMT",
+                "transfer-encoding": "chunked",
+                "connection": "close",
+                "vary": "Accept-Encoding",
+                "etag": "W/\"6081a97e-45b2\"",
+                "strict-transport-security": "max-age=31536000",
+                "content-encoding": "gzip"
+            }
+        }
+    },
+    "user": {
+        "isWhite": false
+    },
+    "formatter": [
+        "saveOriginal"
+    ],
+    "time": {
+        "start": 1619136300798,
+        "end": 1619136307760,
+        "spend": 6.962
+    }
+}

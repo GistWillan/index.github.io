@@ -1,0 +1,454 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	    <script>
+    var now = new Date(); 
+    function createtime() { 
+                          //月、日、年，小时、分、秒
+        var grt= new Date("8/10/2023 00:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); 
+        <!-- 加判断条件避免出现60秒的情况 -->
+  if(snum==60){
+      snum=0;
+    }
+  if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " "+dnum+"  "; //天数
+        document.getElementById("times").innerHTML = hnum + "  "; //小时
+        document.getElementById("times2").innerHTML = mnum + "  "; //分
+    } 
+setInterval("createtime()",250);
+</script>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<!-- Page Title Here -->
+		<title>
+			GistWillan的博客引导页
+		</title>
+		<!-- Disable screen scaling-->
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+		<!-- Initializer -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<!-- Web fonts and Web Icons -->
+		<link rel="stylesheet" href="css/pageloader.css">
+		<link rel="stylesheet" href="css/stylesheet.css">
+		<link rel="stylesheet" href="css/stylesheet_1.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/1.5.2/css/ionicons.min.css">
+		<!-- Vendor CSS style -->
+		<link rel="stylesheet" href="css/foundation.min.css">
+		<link rel="stylesheet" href="css/jquery.fullPage.css">
+		<link rel="stylesheet" href="css/vegas.min.css">
+		<!-- Main CSS files -->
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/main_responsive.css">
+		<link rel="stylesheet" href="css/style-font1.css">
+		<script src="js/modernizr-2.7.1.min.js">
+		</script>
+		<script src="js/sakura.js">
+		</script>
+		<style type="text/css">
+			/**普通指针样式**/ body{cursor:url(css/dorcandy.cur),default;}//默认鼠标效果 /**链接指针样式**/
+			a:hover{cursor:url(css/pointer.cur),pointer;}//链接选择效果
+		</style>
+	</head>
+	<body id="menu" class="alt-bg">
+		<div class="page-loader" id="page-loader">
+			<div>
+				<i class="ion ion-loading-d">
+				</i>
+				<p>
+					欢迎来到我的站点~
+				</p>
+			</div>
+		</div>
+		<header class="header-top">
+			<div class="logo">
+				<a href="#home">
+					<img src="images/logo_large.png" alt="Logo Brand">
+				</a>
+			</div>
+			<div class="menu clearfix">
+				<a href="https://www.starxn.com/">
+					<span style="color:#FFD700;">
+						引导页
+					</span>
+				</a>
+			</div>
+		</header>
+		<nav class="quick-link count-6 nav-left">
+			<ul id="qmenu">
+				<li data-menuanchor="home">
+					<a href="#home">
+						🎪
+					</a>
+					<span class="title">
+						欢迎页面
+					</span>
+				</li>
+				<li data-menuanchor="when">
+					<a href="#when">
+						🍰
+					</a>
+					<span class="title">
+						吃蛋糕啦
+					</span>
+				</li>
+				<li data-menuanchor="register">
+					<a href="#register">
+						🌏
+					</a>
+					<span class="title">
+						站点一览
+					</span>
+				</li>
+				<li data-menuanchor="about-us">
+					<a href="#about-us">
+						👒
+					</a>
+					<span class="title">
+						关于网站
+					</span>
+				</li>
+				<li data-menuanchor="contact">
+					<a href="#contact">
+						📧
+					</a>
+					<span class="title">
+						联系
+					</span>
+				</li>
+			</ul>
+		</nav>
+		<div class="page-cover" id="home">
+			<div class="cover-bg pos-abs full-size bg-img" data-image-src="https://imgs.aixifan.com/live/1495974356790/1495974356790.jpg">
+			</div>
+			<div class="cover-bg pos-abs full-size slide-show">
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E9%A3%8E%E6%99%AF%E7%B3%BB%E5%88%97/020a1051d89f40bd92ad4ce455860ff5.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/41ff17357c8442b58da8b08da9a6c0ca.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/84f153eb6e9f4de082852cca8764d06f.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/581face2aae5490397f9367ac5335b8d.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/1269070950.png">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/2379395075.png">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/91794489178d4d208257c0652a191424.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/a980038dfa0d4b53b52e3ce77907d9b1.jpg">
+				</i>
+				<i class="img" data-src="https://hefollo.com/%E7%94%B5%E8%84%91%E7%AB%AF-4K%E5%9B%BE%E7%89%87/4K%E5%8A%A8%E6%BC%AB%E7%B3%BB%E5%88%97/cbcfdf1f271344308e01fd65cda77f41.jpg">
+				</i>
+			</div>
+			<div class="cover-bg pos-abs full-size bg-color" data-bgcolor="rgba(51, 2, 48, 0.12)">
+			</div>
+		</div>
+		<main class="page-main" id="mainpage">
+			<div class="section page-home page page-cent" id="s-home">
+				<div class="logo-container">
+					<img class="h-logo" src="images/logo_only.png" alt="Logo">
+				</div>
+				<section class="content">
+					<header class="header">
+						<div class="h-left">
+							<h2 title="点这里访问博客~">
+								<a href="https://gistwillanblog.top/">
+									<span style="color:#FFFFFF;">
+										GistWillan
+									</span>
+									<strong>
+										<span style="color:#FFFFFF;">
+											的小站
+										</span>
+									</strong>
+								</a>
+							</h2>
+						</div>
+						<div class="h-right">
+							<h3>
+								By
+								<br>
+								GistWillan
+							</h3>
+							<h4 class="subhead">
+								<a href="#when">
+									了解更多
+								</a>
+							</h4>
+						</div>
+					</header>
+				</section>
+				<div>
+					<article class="text">
+						<form id="mail-subscription" class="form magic send_email_form" method="get"
+						action="ajaxserver/serverfile.php">
+							<p class="invite center">
+								<script type="text/javascript" src="https://quote.51.la/q?id=20628121&mb=1">
+								</script>
+							</p>
+						</form>
+					</article>
+				</div>
+				<footer class="p-footer p-scrolldown">
+					<a href="#when">
+						<div class="arrow-d">
+							<div class="before">
+								你&nbsp;是&nbsp;否
+							</div>
+							<div class="after">
+								在&nbsp;期&nbsp;待&nbsp;着
+							</div>
+							<div class="circle">
+							</div>
+						</div>
+					</a>
+				</footer>
+			</div>
+<div class="section page-when page page-cent" id="s-when">
+                <section class="content">
+                    <div class="clock clock-countdown">
+            <div class="site-config" data-date="8/10/2023 00:00:00" data-date-timezone="+0"></div>
+            <header class="header">
+               <strong> 我的网站已完美运营 </strong> 
+            </header>
+                        <div class="elem-left">
+                            <div class="digit hours"><span id="times">载入时...</span></div>
+                            <div class="text">时</div>
+                        </div>            
+                        <div class="elem-center">
+              <!-- Optional text at top or image logo -->
+              <span class="text top">gistwillanblog.top</span>
+              <!-- Optional logo at top -->
+                            <div class="digit days"><span id="timeDate">载入天数...</span></div>
+                            <div class="text">日</div>
+                        </div>
+                        <div class=" elem-right">
+                            <div class="digit minutes"><span id="times2">载入分...</span></div>
+                            <div class="text">分</div>
+                        </div>
+					</div>
+				</section>
+				<footer class="p-footer p-scrolldown">
+					<a href="#register">
+						<div class="arrow-d">
+							<div class="before">
+								节&nbsp;日
+							</div>
+							<div class="after">
+								快&nbsp;乐
+							</div>
+							<div class="circle">
+							</div>
+						</div>
+					</a>
+				</footer>
+			</div>
+			<div class="section page-register page page-cent " id="s-register">
+				<section class="content">
+					<header class="p-title">
+						<h3>
+							<span style="color:#FFFFFF;">
+								GistWillan站点一览
+							</span>
+						</h3>
+					</header>
+					<div>
+						<article class="text">
+							<p>
+								<a href="https://gistwillanblog.top/" target="_blank">
+									<span style="color:#FFFFFF;">
+										博客-主站： GistWillan的博客，最新博文都在这里。
+									</span>
+								</a>
+							</p>
+							<p>
+								<a href="https://home.gistwillanblog.top/" target="_blank">
+									<span style="color:#FFFFFF;">
+										博客-里站： 主要以实验性功能为主。
+									</span>
+								</a>
+							</p>
+							<p>
+								<a href="https://study.gistwillanblog.top" target="_blank">
+									<span style="color:#FFFFFF;">
+										学习笔记：我的学习笔记
+
+							<p>
+								<a href="https://willamchat.top/" target="_blank">
+									<span style="color:#FFFFFF;">
+										WillamChat： ChatGPT国内可访问站点
+									</span>
+								</a>
+							</p>
+							<form id="mail-subscription" class="form magic send_email_form" method="get"
+							action="ajaxserver/serverfile.php">
+								<p class="invite center">
+									点击上方的链接来访问小站吧~
+								</p>
+							</form>
+						</article>
+					</div>
+				</section>
+				<footer class="p-footer p-scrolldown">
+					<a href="#about-us">
+						<div class="arrow-d">
+							<div class="before">
+								超&nbsp;级&nbsp;帅&nbsp;气&nbsp;的
+							</div>
+							<div class="after">
+								小&nbsp;异&nbsp;大&nbsp;人
+							</div>
+							<div class="circle">
+							</div>
+						</div>
+					</a>
+				</footer>
+			</div>
+			<div class="section page-about page page-cent" id="s-about-us">
+				<section class="content">
+					<header class="p-title">
+						<h3>
+							🍬 关于GistWillan的小站
+						</h3>
+						<h2>
+							欢迎来到
+							<span class="bold">
+								GistWillan的网站
+							</span>
+							一起愉快的
+							<span class="bold">
+								深入交流
+							</span>
+							吧
+						</h2>
+					</header>
+					<article class="text">
+						<p>
+							&emsp;&emsp;٩(◕‿◕｡)۶ 欢迎来到我的科技小天地！这里是我自己的小小实验室，一个充满着创意和探索的地方！(｡♥‿♥｡) 我是一个热爱科技的小可爱，喜欢分享最新的科技趋势和创新的产品
+						</p>
+						<p>
+							&emsp;&emsp; 当然，这里也是一个互动的空间！(＾▽＾) 我非常期待与你建立联系，听到你对科技的见解和想法！如果你有任何问题、建议或者只是想和我交流，都可以随时给我留言哦
+						</p>
+					</div>
+				</section>
+				<footer class="p-footer p-scrolldown">
+					<a href="#contact">
+						<div class="arrow-d">
+							<div class="before">
+								ScarletDor
+							</div>
+							<div class="after">
+								某某的&nbsp;窝
+							</div>
+							<div class="circle">
+							</div>
+						</div>
+					</a>
+				</footer>
+			</div>
+			<div class="section page-contact page page-cent" id="s-contact">
+				<section class="content">
+					<header class="p-title">
+						<h3>
+							💖 联系
+						</h3>
+					</header>
+					<div class="contact">
+						<div class="row">
+							<div class="medium-6 columns left">
+								<ul>
+									<li>
+										<h4>
+											Email
+										</h4>
+										<p>
+											<a href="mailto://gistwillan@gmail.com">
+												gistwillan@gmail.com
+											</a>
+										</p>
+									</li>
+									<li>
+										<h4>
+											学习笔记
+										</h4>
+										<p>
+											<a href="https://study.gistwillanblog.top" target="_blank">
+												GistWillan的学习笔记
+											</a>
+										</p>
+									</li>
+								</ul>
+							</div>
+							<div class="medium-6 columns social-links right">
+								<ul>
+									<li class="show-for-medium-up">
+										<h4>
+											网页
+										</h4>
+										<p>
+											<a href="https://gistwillanblog.top/">
+												我的个人博客
+											</a>
+										</p>
+									</li>
+									<li class="show-for-medium-up">
+										<h4>
+											寻觅踪迹
+										</h4>
+										<div class="socialnet">
+											<a href="https://twiter.com/GistDiA/">
+												<i class="ion ion-social-twitter">
+												</i>
+											</a>
+											<a href="https://t.me/GistDiA">
+												<i class="ion ion-paper-airplane">
+												</i>
+											</a>
+											<a href="https://github.com/gistwillan">
+												<i class="ion ion-social-github">
+												</i>
+											</a>
+										</div>
+									</li>
+									<li>
+										<p>
+											<img src="images/logo_large.png" alt="Logo" class="logo">
+										</p>
+										<p class="small">
+											GistWillan by
+											<strong>
+												<a href="https://Cloudflare.com/">
+													Cloudflare
+												</a>
+											</strong>
+											. All right reserved 2023
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<script src="js/jquery-1.11.2.min.js">
+		</script>
+		<script src="js/all.js">
+		</script>
+		<script src="js/jquery.downCount.js">
+		</script>
+		<script src="js/form_script.js">
+		</script>
+		<script src="js/main.js">
+		</script>
+	</body>
+
+</html>

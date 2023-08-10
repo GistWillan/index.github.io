@@ -1,0 +1,1649 @@
+/*-----------------------------------------------------------------
+[Legal Notice]
+
+Copyright (c) HighHay/Mivfx
+Before using this template, you should agree with themeforest licenses terms.
+http://themeforest.net/licenses
+-------------------------------------------------------------------*/
+/* bubble style */
+.sender{
+  clear:both;
+}
+.sender div:nth-of-type(1){
+  float: left;
+}
+.sender div:nth-of-type(2){
+  background-color: aquamarine;
+  float: left;
+  margin: 0 20px 10px 15px;
+  padding: 10px 10px 10px 0px;
+  border-radius:7px;
+}
+
+.receiver div:first-child img,
+.sender div:first-child img{
+  width:50px;
+  height: 50px;
+}
+
+.receiver{
+  clear:both;
+}
+.receiver div:nth-child(1){
+  float: right;
+}
+.receiver div:nth-of-type(2){
+  float:right;
+  background-color: gold;
+  margin: 0 10px 10px 20px;
+  padding: 10px 0px 10px 10px;
+  border-radius:7px;
+}
+
+.left_triangle{
+  height:0px;  
+  width:0px;  
+  border-width:8px;  
+  border-style:solid;  
+  border-color:transparent aquamarine transparent transparent;  
+  position: relative;
+  left:-16px;
+  top:3px;
+}
+
+.right_triangle{
+  height:0px;  
+  width:0px;  
+  border-width:8px;  
+  border-style:solid;  
+  border-color:transparent transparent transparent gold;  
+  position: relative;
+  right:-16px;
+  top:3px;
+}
+/*------------------------------------------------------------------
+[Table of contents]
+/** CSS Reference
+    0. Base Style
+        0.button Buttons
+        0.color Color bg-XX text-XX
+	1. Link and logo at top / .header-top
+	2. Dot navigation at right / #fp-nav, #fp-nav.right
+	3. Quick links at right / .quick-link
+		3.1 quick link position / .quick-link .count-X (where X=1,2,3,4,5)
+		3.2 Links
+	4. Page footer / .page-footer
+	5. Page cover / .page-cover
+		5.1. page cover background image,color (overriden by data-bgcolor or data-image-src atributes) / .page-cover .cover-bg
+		5.2 Page cover  background mask (overriden by data-bgcolor or data-image-src atributes) / .page-cover .cover-bg-mask
+	6. Main page / .page-main
+		6.0 Page footer with scroll down button / .p-footer
+		6.1 Page general params / .page-cent, .page
+		6.3 Page and slide animation / .page.transition , .slide.transition
+		6.4 Page clock countdown / .page-when, .page .clock
+		6.5 Registration form / .page-register
+		6.6 About us / .page-about
+		6.7 Contact, Message / .page-contact
+	7. Video background / .video-container
+
+	Hooks for responsiveness (mobile friendly) can be found in "main_responsive.css" file
+
+**/
+/*---------- 
+[Colors]
+    text color : #FFFFFF, #FFF
+    blue : #5677FC
+    transluscent white : rgba(255, 255, 255, 0.15) / #fff;
+*/
+
+/* 0. Base Style  */
+/* initialization */
+html {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.4;
+	background: #626262;
+}
+
+::-moz-selection {
+    background: #fff;
+    text-shadow: none;
+}
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+body, html, h1, h2, h3, h4, h5, h6, a, ul, li{
+    
+}
+body{
+    font-family: 'OpenSans';
+    background: #fff;
+    
+    margin: 0;
+    padding: 0;
+}
+ul, li{
+    list-style: none outside none;
+    margin: 0;
+}
+iframe{
+    border: none;   
+}
+.pos-rel{
+    position: relative;
+}
+.pos-abs{
+    position: absolute;
+}
+.pos-fix{
+    position: fixed;
+}
+.full-width{
+    width: 100%;
+    max-width: 1440px;
+}
+.full-height{
+    height: 100%;   
+}
+.full-size{
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+}
+
+.my-button {
+    text-transform: uppercase; 
+    font-size: 1rem;
+    padding: 1em;
+    /* padding-top: 0.8rem; */
+    padding-bottom: 0.8rem;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.center-vh{
+/*
+    height: 100%;
+    width: 100%; 
+*/
+    /* width needed for Firefox */
+
+    /* old flexbox - Webkit and Firefox. For backwards compatibility */
+    display: -webkit-box; display: -moz-box;
+    /* middle-aged flexbox. Needed for IE 10 */
+    display: -ms-flexbox;
+    /* new flexbox. Chrome (prefix), Opera, upcoming browsers without */
+    display: -webkit-flex;
+    display: flex;
+
+    /* old flexbox: box-* */
+    -webkit-box-align: center; -moz-box-align: center;
+    /* middle flexbox: flex-* */
+    -ms-flex-align: center;
+    /* new flexbox: various property names */
+    -webkit-align-items: center;
+    align-items: center;
+
+
+    -webkit-box-pack: center; -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;    
+}
+.pos-top{
+    top:0;
+}
+.pos-left{
+    left: 0;
+}
+.pos-right{
+    right: 0;
+}
+.pos-bottom{
+    bottom: 0;   
+}
+.relh100{
+    position:relative; height: 100%;   
+}
+/* Make page full width so reset foundation restriction on max-width*/
+.row{
+/*    width: 100%;*/
+    max-width: 100%;
+}
+
+
+ul, li{
+    list-style: none outside none;
+    margin: 0;
+}
+
+.full-width{
+    width: 100%;
+    max-width: 100%;
+    
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fullscreen-width{
+    width: 100%;
+    max-width: 100%;
+}
+.table{
+    display: table;
+    height: inherit;
+    margin: auto;
+}
+.table-cell{
+    display: table-cell;
+/*    height: inherit;*/
+    vertical-align: middle;
+}
+.align-center{
+    text-align: center;   
+}
+.align-left{    
+    text-align: left;
+}
+.align-right{
+    text-align: right;   
+}
+.align-justify{
+    text-align: justify;   
+}
+/*
+.mask{
+    position: relative;
+}
+*/
+
+/** 0. color Color */
+.mask:before
+{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    opacity: 0.8;
+/*    z-index: 10;*/
+}
+.title.bg-red,
+.bg-red,
+.mask-red:before{    
+    background: #e51c23;
+}
+.title.bg-yellow,
+.bg-yellow,
+.mask-yellow:before{    
+    background: #ffeb3b;
+}
+.title.bg-blue,
+.bg-blue,
+.mask-blue:before{    
+    background: #5677fc;
+}
+.title.bg-pink,
+.bg-pink,
+.mask-pink:before{    
+    background: #e91e63;
+}
+.title.bg-green,
+.bg-green,
+.mask-green:before{    
+    background: #259b24;
+}
+.title.bg-white,
+.bg-white,
+.mask-white:before{    
+    background: #fff;
+}
+.title.bg-black,
+.bg-black,
+.mask-black:before{    
+    background: #1f1f1f;
+}
+.title.bg-orange,
+.bg-orange,
+.mask-orange:before{    
+    background: #ff9800;
+/*    background: #ef6c00;*/
+}
+.title.bg-purple,
+.bg-purple,
+.mask-purple:before{    
+    background: #9c27b0;
+}
+.title.bg-lime,
+.bg-lime,
+.mask-lime:before{    
+    background: #cddc39;
+}
+.title.bg-bluegrey,
+.bg-bluegrey,
+.mask-bluegrey:before{    
+    background: #607d8b;
+}
+
+.title.bg-bluegreylight,
+.bg-bluegreylight,
+.mask-bluegreylight:before{    
+    background: #f0f0f0;
+}
+.title.bg-bluegreydark,
+.bg-bluegreydark,
+.mask-bluegreydark:before{    
+    background: #37474f;
+}
+.title.bg-indigo,
+.bg-indigo,
+.mask-indigo:before{    
+    background: #3f51b5;
+}
+.title.bg-black,
+.bg-black,
+.mask-black:before{    
+    background: #000;
+}
+.title.bg-black1,
+.bg-black1,
+.mask-black1:before{    
+    background: #333;
+}
+.title.bg-amber,
+.bg-amber,
+.mask-amber:before{    
+    background: #ffc107;
+}
+
+.text-white{
+    color: #fff;   
+}
+.text-black{
+    color: #333333;   
+}
+.text-bold{
+    font-weight: bold;   
+}
+.text-red{
+    color: #e51c23;   
+}
+.text-blue{
+    color: #455ede;   
+}
+.text-orange{
+    color: #ff9800;   
+}
+.text-yellow{
+    color: #ffd600;   
+}
+.text-amber{
+    color: #ffc107;   
+}
+.text-pink{
+    color: #e91e63;   
+}
+.text-lightblue{
+    color: #03a9f4;   
+}
+
+.small-col-20{
+    width: 20%;
+}
+.box-shadow {
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),
+     0 2px 2px rgba(0,0,0,0.2),
+     0 0 4px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),
+     0 2px 2px rgba(0,0,0,0.2),
+     0 0 4px 1px rgba(0,0,0,0.1);
+    -ms-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),
+     0 2px 2px rgba(0,0,0,0.2),
+     0 0 4px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5),
+     0 2px 2px rgba(0,0,0,0.2),
+     0 0 4px 1px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+/* Viewport visibility animation  */
+.hidden{
+     opacity:0;
+     -webkit-transition: 0.6s;
+     -ms-transition: 0.6s;
+     transition: 0.6s;
+}
+.visible{
+     opacity:1;
+    -ms-transition: 0.6s;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+}
+.invisible{
+    display: none !important;  
+}
+.s-visible-medium-up{
+    opacity:0;
+}
+strong,
+.bold{
+	font-weight: bold;
+}
+.column, .columns{
+    padding: 0;   
+}
+.row .row{
+    margin: 0;   
+}
+.header-github{
+    position: fixed;
+    z-index: 20;
+    top:0;
+    right: 0;
+	height: 56px;
+}
+/* 1. Link and logo at top  */
+.header-top{
+    position: fixed;
+    z-index: 20;
+    top:0;
+    left: 0;
+	height: 56px;
+/*
+	background: rgba(255, 255, 255, 0.15);
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+*/
+}
+.header-top.material{
+	background: rgba(255, 255, 255, 0.15);
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+	.header-top>div{
+		display: inline-block;
+		float: left;
+	}
+	.header-top .logo img{
+		height: 56px;
+		width: auto;
+		padding: 8px 16px;
+	}
+	.header-top .logo{
+		transition: 0.3s;
+	}
+	.header-top .logo:hover{
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	.header-top.material .menu{
+		border-right: 1px solid #f5f5f5;
+	}
+	.header-top.material .menu:last-child{
+		border-right: none;
+	}
+	.header-top.material .menu a,
+	.header-top .menu a{
+		height: 56px;
+/*		display: inline-block;*/
+		display: block;
+		float: left;
+		background: #fff;
+		color: #5677fc;
+		text-transform: capitalize;
+		text-align: center;
+		font-size:18px;
+    	font-family: 'Asap';
+		font-weight: normal;
+		padding: 14px 16px;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+	.header-top .menu a{
+		background: transparent;
+		font-weight: normal;
+/*		font-weight: bold;*/
+		color: #fff;
+		position: relative;
+	}
+	.header-top.material .menu a:first-child:after{
+		display: none;
+	}
+	.header-top .menu a:first-child:after{
+		position: absolute;
+		left: 0;
+		top: 25%;
+		height: 50%;
+		width: 1px;
+		background: #fff;
+		content: "";
+	}
+
+	.header-top.material .menu a:hover{
+		background: #5677fc;
+	}
+	.header-top .menu a:hover{
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+	}
+ 
+/* 2. Dot navigation at right */
+#fp-nav.right{
+    right: 28px;
+    margin-right: 10px;
+	position: absolute;
+}
+#fp-nav span, .fp-slidesNav span{
+    border-color: #fff;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	width: 10px;
+	height: 10px;
+}
+#fp-nav ul li a span{
+	background: #fff;
+}
+#fp-nav li, .fp-slidesNav li {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 16px;
+    position: relative;
+}
+	#fp-nav span:after, .fp-slidesNav span:after{	
+		background: rgba(255, 255, 255, 0.15);  
+		position: absolute;
+		content: "";
+		
+		display: block;
+		top: 4px;
+		left: 4px;
+		right: 4px;
+		bottom: 4px;
+		border-radius: 100%;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+#fp-nav li .active span, .fp-slidesNav .active span{
+    background: #fff;
+	position: absolute;
+}
+	#fp-nav li .active span:after, 
+	.fp-slidesNav .active span:after{
+		top: -6px;
+		left: -6px;
+		bottom: -6px;
+		right: -6px;
+	}
+/* 3.  Quick links at right*/
+.quick-link{
+	position: fixed;
+	top: 50%;
+	left: 0;
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+	margin-top: -96px; /* 48*4/2*/
+}
+.quick-link li{
+	list-style: none;
+	list-style-position: outside;
+	display: block;
+	height: 48px;
+	width: 48px;
+	position: relative;
+}
+/* 3.1 quick link position : use it to adjust its position */
+	.quick-link.count-1{
+		margin-top: -24px; /* 48*1/2*/
+	}
+	.quick-link.count-2{
+		margin-top: -48px; /* 48*5/2*/
+	}
+	.quick-link.count-3{
+		margin-top: -72px; /* 48*3/2*/
+	}
+	.quick-link.count-4{
+		margin-top: -96px; /* 48*4/2*/
+	}
+	.quick-link.count-5{
+		margin-top: -120px; /* 48*5/2*/
+	}
+	.quick-link.count-6{
+		margin-top: -144px; /* 48*6/2*/
+	}
+	.quick-link.count-7{
+		margin-top: -168px; /* 48*7/2*/
+	}
+/* 3.2 Links */
+.quick-link a{
+	background: #fff;
+	background: rgba(255, 255, 255, 0.15);
+	height: 48px;
+	width: 48px;
+	display: block;
+	text-align: center;
+	font-size: 22px;
+	padding-top: 0.4rem;
+	color: #fff;
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+.quick-link a:hover{
+/*		opacity: 0.5;*/
+/*		color: #5677fc;*/
+}
+.quick-link ul li{
+	position: relative;
+}
+.quick-link ul li:after,
+.quick-link a:after{
+	position: absolute;
+	content: "";
+	background: rgba(255,255,255,0);
+	border-radius: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	-webkit-transform: scale(0.5);
+	transform: scale(0.5);
+/*		transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);*/
+	-webkit-transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+	transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+	z-index: -1;
+}
+.quick-link ul li.active:after,
+.quick-link a:hover:after{
+	-webkit-transform: none;
+	transform: none;
+	border-radius: 0;
+	background: rgba(255,255,255,0.15);
+	background: #5677fc;
+}
+
+.quick-link ul li.active:after{
+	background: rgba(230, 230, 230, 0.12);
+}
+.quick-link a.marked{
+	color: #fff;
+	background: #5677fc;
+}
+	.quick-link .title{
+		position: absolute;
+		font-size: 12px;
+		left: 56px;
+		top: 17px;
+		color: #fff;
+		font-family: "Asap";
+		text-transform: uppercase;
+		text-align: left;
+		width: 100px;
+		border-bottom: 1px solid currentColor;
+		display: block;
+		transform: translateX(10px);
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+		visibility: hidden;
+		opacity: 0;
+	}
+	.quick-link li:hover .title{
+		-webkit-transform: none;
+		transform: none;
+		display: block;
+		opacity: 1;
+		visibility: visible;
+	}
+
+/* 4. Page footer */
+.page-footer{
+	position: fixed;
+	bottom: 20px;
+	right: 56px;
+	margin-right: -8px;
+	color: #fff;
+	font-size:18px;
+	font-family: 'Asap';
+	font-weight: normal;
+}
+.page-footer a:first-child{
+	margin-left: 8px;
+}
+.page-footer a{
+	color: #fff;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	display: inline-block;
+	padding: 5px 8px;
+}
+.page-footer a .ion{
+	font-size: 1.2em;
+}
+.page-footer a:hover{
+	opacity: 0.8;
+}
+
+
+/* 5. Page cover */
+.page-cover{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    z-index: 0;
+}
+    /* 5.1. Page cover background image,color */
+    .page-cover .cover-bg{
+        background: url(../images/bg_forest.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        z-index: -3;
+    }
+	.page-cover .cover-bg.bg-color{
+        background-image: none;
+        z-index: -3;
+    }
+
+    /* 5.2 Page cover  background mask */
+    .page-cover .cover-bg.cover-bg-mask{
+        background: rgba(0, 0, 0, 0.12);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed; 
+        z-index: 0;
+        -webkit-transition: 2s;
+        -ms-transition: 2s;
+        transition: 2s;
+    }
+	/* 5.3 background slide */
+	.page-cover .vegas-timer {
+		display: none;
+	}
+/* 6. Main Page */
+.page-main{  
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+ 
+/* 6.0 Page footer with scroll down button */
+.p-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-top: 5rem;
+}
+.p-footer .icon{
+	position: absolute;
+	top: 24px;
+	color: #fff;
+	text-align: center;
+	width: 24px;
+	margin-left: -12px;
+	font-size: 20px;
+	transition: 0.3s;
+}
+	.p-footer .text{
+		font-size: 12px;
+		font-family: "Asap";
+		text-transform: uppercase;
+	}
+.p-footer:hover .icon{
+	opacity: 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.p-footer .arrow-d{
+    position: relative;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    height: 48px;
+    width: 48px;
+    left: 50%;
+    bottom: 32px;
+	margin: 0;
+	display: block;
+	border: 0px solid #fff;
+	border-radius: 100%;
+    margin-left: -24px;   
+	transition: 0.3s;
+	font-family: "Asap";
+	color: #fff;
+	font-size: 14px;
+}
+	.p-footer .arrow-d:hover{
+		background: #5677fc;
+	}
+	.p-footer .arrow-d.gone{
+		-webkit-transform: scale(0);   
+		transform: scale(0);   
+		-webkit-transition: 0.2s;
+		transition: 0.2s;
+	}
+	.p-footer .arrow-d .circle{
+		top: 12px;
+		bottom: 12px;
+		left: 12px;
+		right: 12px;
+		position: absolute;
+		content: "";
+		background: #fff;
+		border-radius: 100%;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+
+	.p-footer .arrow-d .circle:after{
+		top: 12px;
+		bottom: 12px;
+		left: 12px;
+		right: 12px;
+		position: absolute;
+		content: "";
+		background: #fff;
+		border-radius: 100%;
+		-webkit-transition: 0.3s ;
+		transition: 0.3s ;
+	}
+	.p-footer .arrow-d .after,
+	.p-footer .arrow-d .before{
+		top: 14px;
+		position: absolute;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+		opacity: 1;
+	}
+	/* Hover animation */
+	.p-footer .arrow-d:hover .after,
+	.p-footer .arrow-d:hover .before{
+		opacity: 0.15;
+	}
+	.p-footer .arrow-d:hover .circle{
+		background: #5677fc;
+		background: rgba(86, 119, 252, 0);
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px; 
+	}
+	.p-footer .arrow-d:hover .circle:after{	
+		border-radius: 0;
+		left: 23px;
+		right: 23px;
+	}
+	.p-footer .arrow-d .before{
+		text-align: right;
+		float: right;
+		right: 72px;
+	}
+	.p-footer .arrow-d .after{
+		text-align: left;
+		float: left;
+		left: 72px;
+	}
+	.p-footer .arrow-d:after,
+	.p-footer .arrow-d:before{
+		position: absolute; content: ' ';
+		width: 24px;
+		height: 24px;
+		left: 12px;
+		margin-left: 0.5px;
+	/*
+		-webkit-transform: rotateY(45deg);
+		-ie-transform: rotateY(45deg);
+	*/
+		border: 2px solid rgba(255, 255, 255, 0.15);
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		-ms-transition: 0.3s;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+	}
+	.p-footer .arrow-d:after{   
+		border-right-color: transparent;  
+		top: 12px;
+		left: 36px;
+		-ms-transform: rotateZ(-45deg); 
+		-webkit-transform: rotateZ(-45deg); 
+		transform: rotateZ(-45deg); 
+	}
+	.p-footer .arrow-d:before{  
+		border-bottom-color: transparent;
+		top: 12px; 
+		left: -12px;
+		-ms-transform: rotateZ(-135deg);
+		-moz-transform: rotateZ(-135deg);
+		transform: rotateZ(-135deg);
+	}
+	.p-footer .arrow-d.no-change:after, 
+	.p-footer .arrow-d:hover:after{ 
+		top: 14px; 
+		left: 14px;
+		bottom: 14px;
+		right: 14px;
+		width: auto;
+		height: auto;
+		border: 2px solid #fff;
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		border-right-color: transparent; 
+		-ms-transform: rotateZ(45deg);
+		-webkit-transform: rotateZ(45deg);
+		transform: rotateZ(45deg);
+	}
+	.p-footer .arrow-d.no-change:before,
+	.p-footer .arrow-d:hover:before{
+		top: 14px;
+		left: 14px;
+		bottom: 14px;
+		right: 14px;
+		width: auto;
+		height: auto;
+
+		border: 2px solid #fff;
+		border-left-color: transparent;
+		border-top-color: transparent;  
+		border-bottom-color: transparent;
+		-ms-transform: rotateZ(45deg);
+		-webkit-transform: rotateZ(45deg);
+		transform: rotateZ(45deg);
+	}
+	.p-footer:hover .arrow-d.no-change:after, 
+	.p-footer:hover .arrow-d.no-change:before{
+		top: 4rem;
+	}
+	.p-footer .arrow-d a{
+		color: inherit;
+	}
+/* 6.1 Page general params */
+
+.page{    
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.page-cent{
+    width: 100%;   
+    position: relative;
+    text-align: center;
+}
+.page-cent .content p{
+}
+.page-cent .content{
+    width: 720px;
+/*    width: auto;*/
+    margin: 0 auto;
+	padding-top: 72px;
+	padding-bottom: 72px;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: inline-block; 
+    -ms-transition: 0.6s;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+	text-align: left;
+    font-family: 'Asap';
+	color: #fff;
+}
+
+.page-cent .p-title{
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.page-cent .p-title h3{
+/*    text-transform: capitalize;   */
+    font-size: 30px;
+    padding-left: 0px;
+    text-align: left;
+    display: inline-block;
+	color: #fff;
+    font-family: 'Asap';
+	border-bottom: 8px solid #5677fc;
+}
+.page-cent .p-title h2{
+    text-transform: uppercase;   
+    font-size: 56px;
+	line-height: 1.3em;
+    text-align: left;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+    display: block;
+	color: #fff;
+    font-family: 'Asap';
+}
+
+/* Page general structure */
+.page .p-title i{
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 0em;
+	font-size: 0.8em;
+}
+.page-cent .text{	
+    font-family: 'Asap';
+	color: #fff;
+	text-align: left;
+}
+.page p{    
+    font-family: 'Asap';
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 0.75rem;
+}
+.page p.small{
+	font-size: 14px;
+}
+.page p.center{
+	text-align: center;
+}
+.page p.upper{
+    text-transform: uppercase;
+}
+.page p.light{
+    font-family: 'OpenSans-Light';
+}
+.page h4{
+	text-transform: uppercase;
+	font-weight: bold;
+    color: #ffffff;
+    font-size: 20px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.page h2,
+.page h3,
+.page h4{
+    font-family: 'Asap';
+    color: #ffffff;
+}
+
+/* 6.2 Page and slide animation */
+.slide,
+.page .content,
+.page-home .logo-container ,
+.page{
+	-webkit-transition: 0.8s background , 0.6s transform, 0.6s opacity;
+	transition: 0.8s background , 0.6s transform, 0.6s opacity;
+	-webkit-transform: none;
+	transform: none;
+	background: transparent;
+/*
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+*/
+	border: none;
+}
+.page .content{
+	z-index: 1;
+}
+.page:before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: transparent;
+	content: '';
+	z-index: 0;
+	-webkit-visibility: hidden;
+	visibility: hidden;
+	-webkit-transition: 0.8s background , 0.6s transform, 0.8s visibility;
+	transition: 0.8s background , 0.6s transform, 0.8s visibility;
+	-webkit-transform: none;
+	transform: none;
+}
+.page.transition:before{
+	-webkit-visibility: visible;
+	visibility: visible;
+	-webkit-transform: scale(0.8);
+	transform: scale(0.8);
+	background: rgba(255, 255, 255, 0.15);
+}
+.page-home.transition .logo-container{
+	-webkit-transform: translateY(20px) scale(0.1);
+	transform: translateY(20px) scale(0.1);
+	opacity: 0;
+}
+.page.transition .content{
+	-webkit-transform: scale(0.85);
+	transform: scale(0.85);
+/*	background: rgba(255, 255, 255, 0.15);*/
+}
+.slide.transition{
+	-webkit-transform: scale(0.8);
+	transform: scale(0.8);
+	background: rgba(255, 255, 255, 0.15);
+}
+/* 6.3 Home page */
+.page-home .content ,
+.page-home.page-cent .content {
+	position: relative;
+	max-width: 1200px;
+	width: 100%;
+}
+.page-home .logo-container{
+	position: absolute;
+	top: 100px;
+	width: 100%;
+	text-align: center;
+}
+
+.page-home .logo-container img.h-logo{
+	position: relative;
+	display: inline-block;
+	/* adjust below according t your llogo dimension */
+	height: 100px;
+	width: auto;
+}
+
+.page-home .content .header{
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+}
+.page-home .content .header>div{
+	display: inline-block;
+	position: relative;
+}
+
+.page-home .content h2{
+	text-transform: uppercase;
+	font-size: 94px;
+	text-align: left;
+	line-height: 1em;
+}
+
+.page-home .content h3{
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 40px;
+	line-height: 1em;
+	font-weight: bold;
+	border-left: 4px solid currentColor;
+	padding-left: 10px;
+	margin-left: 10px;
+	max-width: 180px;
+}
+
+.page-home .content .subhead{
+	display: block;
+	text-align: left;
+	position: absolute;
+	left: 20px;
+	color: rgba(255,255,255,0.2);
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+/*	width: 300px;*/
+/*	border-top: 1px solid currentColor;*/
+}
+
+.page-home .content .subhead:hover{
+	color: #fff;
+}
+
+.page-home .content .subhead a{
+	color: inherit;
+}
+/* 6.4 Page clock countdown */
+.page-when .content{
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.page .content .clock{
+	width: 430px;
+	height: 430px;
+	margin: 0 auto;
+	border-radius: 100%;
+	background: rgba(255,255,255,0.15);
+	position: relative;
+}
+
+/* Mask to disable click */
+
+.page .content .clock:before{
+	z-index: 3;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	content: "";
+	background: rgba(255,255,255,0);
+	border-radius: 100%;
+	box-shadow: 0px 0px 24px 1px rgba(7, 7, 7, 0.15);
+}
+
+.page .content .clock .header{
+	position: absolute;
+	top: -72px;
+    font-family: 'Asap';
+	font-weight: normal;
+	font-size: 30px;
+	text-align: center;
+	width: 100%;
+}
+.page .clock .text{
+    position: relative; 
+    width: 100%;
+    font-family: 'Asap';
+	font-weight: normal;
+    letter-spacing: 0;
+    margin-top: 0.5em;
+    display: block;
+    text-transform: uppercase;
+    color: #fff;
+	text-align: center;
+}
+.page .clock .block:last-child .digit:after{
+    display: none;
+}
+.page .clock .elem-center{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+	width: 100%;
+	top: 0;
+	margin-top: 50%;
+	height: 50%;
+	bottom: 0;
+}
+.page .clock .elem-center .digit{
+    position: relative; 
+    font-size: 120px;
+	margin-top: -0.5em;
+	letter-spacing: -0.03em;
+	line-height: 1em;
+    font-family: 'Asap';
+	font-weight: bold;
+	width: 100%;
+    color: #fff;
+    display: block;
+}
+.page .clock .elem-center .text{
+	position: absolute;
+	bottom: 58%;
+	font-size: 24px;
+	margin-top: 0;
+}
+.page .clock .elem-center .text.top{
+	bottom: 124%;
+}
+.page .clock .elem-center .text.top img{
+	height: 65px;
+	margin-bottom: 20px;
+}
+.page .clock .elem-right,
+.page .clock .elem-left{
+	position: absolute;
+	width: 70px;
+	top: 50%;
+	bottom: 0;
+	display: block;
+}
+.page .clock .elem-left{
+	left: 50px;
+}
+.page .clock .elem-right{
+	right: 50px;
+}
+.page .clock .elem-right .text,
+.page .clock .elem-left .text{
+	position: absolute;
+	bottom: 58%;
+	font-size: 24px;
+	margin-top: 0;
+}
+.page .clock .elem-right .digit,
+.page .clock .elem-left .digit{
+    position: relative; 
+	text-align: center;
+    font-size: 60px;
+	letter-spacing: -0.03em;
+	margin-top: -0.5em;
+	line-height: 1em;
+    font-family: 'Asap';
+	font-weight: normal;
+	width: 100%;
+    color: #fff;
+    display: block;
+}
+.page .clock .second{
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	bottom: 15px;
+	right: 15px;
+	border: 0px solid #fff;
+	border-radius: 100%;
+	z-index: 2;
+	-webkit-box-shadow: inset 0px 0px 0px 2px #fff;
+	-moz-box-shadow: inset 0px 0px 0px 2px #fff;
+	box-shadow: inset 0px 0px 0px 2px #fff;
+}
+
+/* 6.5 Registration form */
+.page-register .content{
+/*    margin-top: -4rem;*/
+/*
+    padding-left: 1em;
+    padding-right: 1em;
+*/
+/*    padding-top: 0.2rem;*/
+}
+.page .form{  
+}
+.page .form input{ 
+    background: transparent;
+/*    background: #f4f;*/
+    border: none;
+    color: #fff;
+    padding: 0em 1em;
+	padding-bottom: 0.3em;
+    font-family: 'Asap';
+    font-size: 20px;
+    box-shadow: none;
+    display: inline-block;
+/*    min-width: 400px;*/
+	position: absolute;
+    width: auto;
+	width: 100%;
+	bottom: 0;
+	left: 80px;
+	right: 0;
+	margin-bottom: 0;
+}
+.page .form.send_email_form input{
+	
+}
+.page .form.send_email_form .fields{
+	margin-top: 72px;
+	background: rgba(255, 255, 255, 0.10);
+	padding-left: 16px;
+	height: 46px;
+	min-height: 36px;
+}
+
+.page .form.send_email_form .buttons,
+.page .form.send_email_form .buttons button{
+	height: 45px;
+}
+.page .form label{
+	display: inline-block;
+    font-family: 'Asap';
+	font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+	text-transform: uppercase;
+    display: inline-block;
+	margin-bottom: 0.35em;
+	padding-top: 0.40em;
+}
+.page .form .fields{
+	margin-top: 24px;
+	position: relative;
+    border-bottom: 1px solid #5677fc;
+}
+.page .form .fields.no-border{
+	border: none;
+}
+.page .form .fields>div{
+	float: left;
+}
+.page .form .fields .buttons{ 
+	position: absolute;
+	bottom: 0;
+	right: -.5px;
+}
+.page .form button{ 
+    background: #5677fc;
+    color: #fff;
+    font-family: 'Asap';
+	font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem; 
+    margin-bottom: 0;
+	position: relative;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	z-index: 2;
+}
+.page .form button:after{
+	z-index: -1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+	bottom: 50%;
+	content: "";
+	background: #fff;
+	opacity: 0;
+	border-radius: 120px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;	
+}
+.page .form button:hover:after{
+	opacity: 1;
+	border-radius: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.page .form button:hover{
+	background: transparent;
+	color: #5677fc;
+}
+.page .form textarea{ 
+    background: #fff;
+    border: 1px solid currentColor;
+    color: #626262;
+    padding: 0.5em 1em;
+    min-width: 200px;    
+    font-size: 20px;
+	font-family: "Asap";
+    display: block;
+    width: 100%;
+    box-shadow: none;
+    min-height: 108px;
+	margin-top: 3px;
+} 
+.page .message-ok{
+    margin-bottom: 0;
+    position: absolute;
+    font-size: 20px;
+}
+
+/* 6.6 About us */
+.page-about .content{
+    
+    margin-top: -4rem;
+    border: none;
+/*
+    padding-left: 1em;
+    padding-right: 1em;
+*/
+    padding-top: 112px;
+    padding-bottom: 112px;
+}
+.page-about .article{
+       max-width: 480px;
+    margin: auto;
+}
+
+/* 6.7 Contact, Message */
+.page-contact{  
+/*    margin-top: -1rem;*/
+}
+
+.page-contact .fp-controlArrow {
+	display: none;
+}
+.page-contact .p-title{
+	position: relative;
+}
+.page-contact .p-title .buttons{
+	position: absolute;
+	bottom: 8px;
+	right: 0;
+	background: rgba(255,255,255,0.15);
+	display: inline-block;
+}
+
+.page-contact .p-title .buttons li{
+	position: relative;
+	display: block;
+	width: 48px;
+	float: left;
+}
+.page-contact .p-title .buttons a{
+	text-align: center;
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	position: relative;
+	margin: 0;
+}
+.page-contact .p-title .buttons a i{
+	margin: 0;
+	font-size: 24px;
+	padding-top: 0.5em;
+}
+
+.page-contact .p-title .buttons a:after{
+	position: absolute;
+	content: "";
+	background: rgba(255,255,255,0);
+	border-radius: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+}
+.page-contact .p-title .buttons a:hover:after{
+	border-radius: 0;
+	background: rgba(255,255,255,0.15);
+}
+.page-contact .contact li{
+	margin-top: 20px;
+}
+.page-contact .contact img{
+	height: 56px;
+	width: auto;
+}
+.page-contact a{
+    color: #fff;
+}
+.page-contact .right{
+	text-align: right;
+}
+	.page-contact .social-links .page-header .header-title{
+        display: none;
+    }
+    .page-contact .socialnet{
+		margin-right: -10px;
+	}
+    .page-contact .socialnet a{
+        color: #fff;
+		font-size: 24px;
+        margin-bottom:  0.25rem;
+        display: inline-block;
+		width: 1.5em;
+        border-radius: 1em;
+        background: transparent; 
+		position: relative;
+		text-align: center;
+    }
+    .page-contact .socialnet a:after{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: transparent;
+        -ms-transition: 0.3s;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+		border-radius: 100%;
+	}
+    .page-contact .socialnet a:hover:after{
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.15); 
+        color: #fff;       
+    }
+/* Form */
+
+/* 7. Video background */
+/* 7.1. static video background */
+.video-container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    z-index: -2;
+}
+.video-container video{
+    height: 724px; 
+    width: 1287px; 
+    margin-top: -42px; 
+    margin-left: 0px;   
+}
+.video-container iframe{    
+    width: 100%;
+    height: 100%;
+}
+.show-for-medium-up{
+    display: none;   
+}
+
+
+
