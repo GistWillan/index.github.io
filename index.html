@@ -470,6 +470,27 @@ setInterval("createtime()",250);
 		</script>
 		<script src="js/main.js">
 		</script>
+										<script>
+    // 等待页面加载完成
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("scroll-container");
+        let currentSection = 0;
+
+        // 监听鼠标滚轮事件
+        container.addEventListener("wheel", function (event) {
+            // 检查滚动方向
+            if (event.deltaY > 0 && currentSection < container.children.length - 1) {
+                currentSection++;
+            } else if (event.deltaY < 0 && currentSection > 0) {
+                currentSection--;
+            }
+
+            // 滚动到相应部分
+            container.children[currentSection].scrollIntoView({ behavior: "smooth" });
+        });
+    });
+</script>
+
 	</body>
 
 </html>
