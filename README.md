@@ -39,7 +39,7 @@
 如果您想与 GistWillan 取得联系或了解更多信息，您可以通过以下方式联系他：
 
 - **电子邮件：** [gistwillan@gmail.com](mailto:gistwillan@gmail.com)
-- **个人博客：** [GistWillan的博客](https://gistwillanblog.top/)
+- **个人博客：** [GistWillan的博客](https://blog.gistwillan.top/)
 
 ## 版权信息
 
