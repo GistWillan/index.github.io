@@ -1,34 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="en">
-<script>
-    var now = new Date(); 
-    function createtime() {  //月、日、年，小时、分、秒                 
-        var grt= new Date("3/29/2023 00:00:00");
-        now.setTime(now.getTime()+250); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        snum = Math.round(seconds); 
-        <!-- 加判断条件避免出现60秒的情况 -->
-  if(snum==60){
-      snum=0;
-    }
-  if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = " "+dnum+"  "; //天数
-        document.getElementById("times").innerHTML = hnum + "  "; //小时
-        document.getElementById("times2").innerHTML = mnum + "  "; //分
-    } 
-setInterval("createtime()",250);
-</script>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <!-- Page Title Here -->
-    <title>
-        GistWillan的博客引导页
-    </title>
+    <title>GistWillan的博客引导页</title>
     <!-- Disable screen scaling-->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
     <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
@@ -48,13 +25,78 @@ setInterval("createtime()",250);
     <link rel="stylesheet" href="css/main_responsive.css">
     <link rel="stylesheet" href="css/style-font1.css">
     <script src="js/modernizr-2.7.1.min.js"></script>
+
+    <!-- Custom CSS for improved layout and readability -->
     <style type="text/css">
-        /**普通指针样式**/ body{cursor:url(css/dorcandy.cur),default;}//默认鼠标效果 /**链接指针样式**/
-        a:hover{cursor:url(css/pointer.cur),pointer;}//链接选择效果
+        /** 普通指针样式 **/
+        body {
+            cursor: url(css/dorcandy.cur), default;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #eee;
+        }
+
+        /** 链接指针样式 **/
+        a:hover {
+            cursor: url(css/pointer.cur), pointer;
+        }
+        
+        /* 站点一览部分的新增布局样式 */
+        .site-links-grid {
+            display: grid;
+            /* 默认布局，适用于小屏设备，自适应列数 */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* 针对PC或大屏设备，强制3列布局，使项目平铺且不拥挤 */
+        @media (min-width: 1024px) {
+            .site-links-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .site-card {
+            display: block;
+            /* 将背景颜色调暗以增强可读性 */
+            background: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .site-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .site-card h4 {
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .site-card p {
+            /* 提高描述文字亮度以增强可读性 */
+            color: #E0E0E0;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        /* 确保标题文字为白色，增强可读性 */
+        .light-text {
+            color: #fff !important;
+        }
     </style>
-</head>
-<body id="menu" class="alt-bg">
-    <!-- JavaScript for createtime function, moved to body for better practice -->
+
+    <!-- JavaScript for createtime function, moved to head for consistency -->
     <script>
         var now = new Date();
         function createtime() {
@@ -66,10 +108,7 @@ setInterval("createtime()",250);
             mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
             seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
             snum = Math.round(seconds);
-            // 加判断条件避免出现60秒的情况
-            if (snum == 60) {
-                snum = 0;
-            }
+            if (snum == 60) { snum = 0; }
             if (String(snum).length == 1) { snum = "0" + snum; }
             document.getElementById("timeDate").innerHTML = " " + dnum + " "; //天数
             document.getElementById("times").innerHTML = hnum + " "; //小时
@@ -77,7 +116,9 @@ setInterval("createtime()",250);
         }
         setInterval("createtime()", 250);
     </script>
+</head>
 
+<body id="menu" class="alt-bg">
     <div class="page-loader" id="page-loader">
         <div>
             <i class="ion ion-loading-d"></i>
@@ -91,7 +132,7 @@ setInterval("createtime()",250);
             </a>
         </div>
         <div class="menu clearfix">
-            <a href="https://indedx.gistwillanblog.top/">
+            <a href="https://index.gistwillanblog.top/">
                 <span style="color:#FFD700;">引导页</span>
             </a>
         </div>
@@ -145,9 +186,9 @@ setInterval("createtime()",250);
                     <div class="h-left">
                         <h2 title="点这里访问博客~">
                             <a href="https://blog.gistwillan.top/">
-                                <span style="color:#FFFFFF;">GistWillan</span>
+                                <span class="light-text">GistWillan</span>
                                 <strong>
-                                    <span style="color:#FFFFFF;">的小站</span>
+                                    <span class="light-text">的小站</span>
                                 </strong>
                             </a>
                         </h2>
@@ -155,8 +196,7 @@ setInterval("createtime()",250);
                     <div class="h-right">
                         <h3>
                             By
-                            <br>
-                            GistWillan
+                            <br> GistWillan
                         </h3>
                         <h4 class="subhead">
                             <a href="#when">了解更多</a>
@@ -195,9 +235,7 @@ setInterval("createtime()",250);
                         <div class="text">时</div>
                     </div>
                     <div class="elem-center">
-                        <!-- Optional text at top or image logo -->
                         <span class="text top">blog.gistwillan.top</span>
-                        <!-- Optional logo at top -->
                         <div class="digit days"><span id="timeDate">载入天数...</span></div>
                         <div class="text">日</div>
                     </div>
@@ -221,67 +259,60 @@ setInterval("createtime()",250);
             <section class="content">
                 <header class="p-title">
                     <h3>
-                        <span style="color:#FFFFFF;">GistWillan站点一览</span>
+                        <span class="light-text">GistWillan站点一览</span>
                     </h3>
                 </header>
                 <div>
                     <article class="text">
-                        <p>
-                            <a href="https://blog.gistwillan.top/" target="_blank">
-                                <span style="color:#FFFFFF;">博客-主站： GistWillan的博客，最新博文都在这里</span>
+                        <!-- New grid layout for site links -->
+                        <div class="site-links-grid">
+                            <a href="https://blog.gistwillan.top/" target="_blank" class="site-card">
+                                <h4>博客主站</h4>
+                                <p>更新最新文章</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://gistwillan.wordpress.com/" target="_blank">
-                                <span style="color:#FFFFFF;">博客-Wordpress站点(目前暂时停止更新)： 同步更新主站博客文章</span>
+                            <a href="https://gistwillan.wordpress.com/" target="_blank" class="site-card">
+                                <h4>Wordpress站点</h4>
+                                <p>同步主站文章 (暂时停止更新)</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://gistwillan.cn/" target="_blank">
-                                <span style="color:#FFFFFF;">博客-CN站点： GistWillan的博客，专为CN地区搭建</span>
+                            <a href="https://gistwillan.cn/" target="_blank" class="site-card">
+                                <h4>CN站点</h4>
+                                <p>专为国内用户搭建</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://study.gistwillan.top" target="_blank">
-                                <span style="color:#FFFFFF;">学习笔记：我的学习笔记</span>
+                            <a href="https://study.gistwillan.top" target="_blank" class="site-card">
+                                <h4>学习笔记</h4>
+                                <p>我的个人学习笔记</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://bing.gistwillanblog.top/" target="_blank">
-                                <span style="color:#FFFFFF;">BingChat： BingChat国内可访问站点</span>
+                            <a href="https://bing.gistwillanblog.top/" target="_blank" class="site-card">
+                                <h4>BingChat</h4>
+                                <p>国内可访问的BingChat</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://chat.gistwillanblog.top/" target="_blank">
-                                <span style="color:#FFFFFF;">WillamChat： ChatGPT国内可访问站点</span>
+                            <a href="https://chat.gistwillanblog.top/" target="_blank" class="site-card">
+                                <h4>WillamChat</h4>
+                                <p>国内可访问的ChatGPT</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://ai.gistwillan.com/" target="_blank">
-                                <span style="color:#FFFFFF;">AI站点： 多个语言及画图模型可供免费使用</span>
+                            <a href="https://ai.gistwillan.com/" target="_blank" class="site-card">
+                                <h4>AI站点</h4>
+                                <p>提供多种语言和画图模型</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://tools.gistwillan.top" target="_blank">
-                                <span style="color:#FFFFFF;">在线工具站点： 包含各种小型Web应用和工具</span>
+                            <a href="https://tools.gistwillan.top" target="_blank" class="site-card">
+                                <h4>在线工具</h4>
+                                <p>各种小型Web应用和工具</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://mihoyo.gistwillan.top/" target="_blank">
-                                <span style="color:#FFFFFF;">米游社表情大全下载，所有表情均可免费下载</span>
+                            <a href="https://mihoyo.gistwillan.top/" target="_blank" class="site-card">
+                                <h4>米游社表情下载</h4>
+                                <p>所有表情均可免费下载</p>
                             </a>
-                        </p><p>
-                            <a href="https://moto.gistwillan.top/" target="_blank">
-                                <span style="color:#FFFFFF;">巅峰摸头在线生成,在线生成摸头图片，可下载</span>
+                            <a href="https://moto.gistwillan.top/" target="_blank" class="site-card">
+                                <h4>巅峰摸头生成</h4>
+                                <p>在线生成摸头图片，可下载</p>
                             </a>
-                        </p>
-                        <p>
-                            <a href="https://design.gistwillan.top/" target="_blank">
-                                <span style="color:#FFFFFF;">新拟态可视化UI在线生成工具,在线生成拟态UI的CSS代码</span>
+                            <a href="https://design.gistwillan.top/" target="_blank" class="site-card">
+                                <h4>新拟态UI生成工具</h4>
+                                <p>在线生成拟态UI的CSS代码</p>
                             </a>
-                        </p>
+                        </div>
                         <form id="mail-subscription" class="form magic send_email_form" method="get" action="ajaxserver/serverfile.php">
-                            <p class="invite center">
+                            <p class="invite center" style="margin-top: 30px;">
                                 点击上方的链接来访问小站吧~
                             </p>
                         </form>
@@ -304,20 +335,21 @@ setInterval("createtime()",250);
                     <h3>🍬 关于GistWillan的小站</h3>
                     <h2>
                         欢迎来到
-                        <span class="bold">GistWillan的网站</span>
+                        <span class="bold light-text">GistWillan的网站</span>
                         一起愉快的
-                        <span class="bold">深入交流</span>
+                        <span class="bold light-text">深入交流</span>
                         吧
                     </h2>
                 </header>
                 <article class="text">
+                    <!-- Adjusted paragraph formatting for better readability -->
                     <p>
-                        &emsp;&emsp;٩(◕‿◕｡)۶ 欢迎来到我的科技小天地！这里是我自己的小小实验室，一个充满着创意和探索的地方！(｡♥‿♥｡) 我是一个热爱科技的小可爱，喜欢分享最新的科技趋势和创新的产品
+                        ٩(◕‿◕｡)۶ 欢迎来到我的科技小天地！这里是我自己的小小实验室，一个充满着创意和探索的地方！(｡♥‿♥｡) 我是一个热爱科技的小可爱，喜欢分享最新的科技趋势和创新的产品
                     </p>
                     <p>
-                        &emsp;&emsp; 当然，这里也是一个互动的空间！(＾▽＾) 我非常期待与你建立联系，听到你对科技的见解和想法！如果你有任何问题、建议或者只是想和我交流，都可以随时给我留言哦
+                        当然，这里也是一个互动的空间！(＾▽＾) 我非常期待与你建立联系，听到你对科技的见解和想法！如果你有任何问题、建议或者只是想和我交流，都可以随时给我留言哦
                     </p>
-                </article> <!-- Corrected: Removed the extra </div> here -->
+                </article>
             </section>
             <footer class="p-footer p-scrolldown">
                 <a href="#contact">
@@ -393,4 +425,5 @@ setInterval("createtime()",250);
     <script src="js/form_script.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
