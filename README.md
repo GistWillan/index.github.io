@@ -45,4 +45,4 @@
 
 这个引导页由 GistWillan 创建，并由 [Cloudflare](https://cloudflare.com/) 提供托管和支持。保留所有权利。
 
-© 2025 GistWillan. 版权所有。
+© 2023-2025 GistWillan. 版权所有。
