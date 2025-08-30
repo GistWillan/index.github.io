@@ -94,6 +94,126 @@
         .light-text {
             color: #fff !important;
         }
+        
+        /* 现代时钟样式 */
+        .modern-clock {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .modern-clock .header {
+            position: static;
+            margin-bottom: 1.5rem;
+            font-size: 28px;
+            font-weight: normal;
+        }
+        
+        .domain-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            font-family: 'OpenSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .time-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+        
+        .time-item .digit {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            line-height: 1.2;
+        }
+        
+        .time-item .text {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .time-separator {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #5677FC;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .domain-title {
+                font-size: 1.8rem;
+            }
+            
+            .time-item .digit {
+                font-size: 2rem;
+            }
+            
+            .time-separator {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .domain-title {
+                font-size: 1.5rem;
+            }
+            
+            .time-display {
+                gap: 0.5rem;
+            }
+            
+            .time-item {
+                min-width: 60px;
+            }
+            
+            .time-item .digit {
+                font-size: 1.5rem;
+            }
+            
+            .time-separator {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* 半透明毛玻璃暗色macOS风格窗口效果 */
+        .modern-clock {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .modern-clock:hover {
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
     </style>
 
     <!-- JavaScript for createtime function, moved to head for consistency -->
@@ -225,23 +345,32 @@
         </div>
         <div class="section page-when page page-cent" id="s-when">
             <section class="content">
-                <div class="clock clock-countdown">
+                <div class="modern-clock">
                     <div class="site-config" data-date="3/1/2023 00:00:00" data-date-timezone="+0"></div>
                     <header class="header">
                         <strong> 我的网站已完美运营 </strong>
                     </header>
-                    <div class="elem-left">
-                        <div class="digit hours"><span id="times">载入时...</span></div>
-                        <div class="text">时</div>
-                    </div>
-                    <div class="elem-center">
-                        <span class="text top">blog.gistwillan.top</span>
-                        <div class="digit days"><span id="timeDate">载入天数...</span></div>
-                        <div class="text">日</div>
-                    </div>
-                    <div class=" elem-right">
-                        <div class="digit minutes"><span id="times2">载入分...</span></div>
-                        <div class="text">分</div>
+                    <div class="domain-title">blog.gistwillan.top</div>
+                    <div class="time-display">
+                        <div class="time-item">
+                            <div class="digit years"><span id="timeYears">载入年数...</span></div>
+                            <div class="text">年</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-item">
+                            <div class="digit days"><span id="timeDate">载入天数...</span></div>
+                            <div class="text">日</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-item">
+                            <div class="digit hours"><span id="times">载入时...</span></div>
+                            <div class="text">时</div>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-item">
+                            <div class="digit minutes"><span id="times2">载入分...</span></div>
+                            <div class="text">分</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -428,6 +557,95 @@
     <script src="js/jquery.downCount.js"></script>
     <script src="js/form_script.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- 现代时钟功能增强 -->
+    <script>
+        $(document).ready(function() {
+            // 将域名字母改为大写
+            $('.domain-title').text($('.domain-title').text().toUpperCase());
+            
+            // 计算并显示年份、日期、小时和分钟
+            function updateClock() {
+                // 获取目标日期 (从data-date属性)
+                var targetDateStr = $('.site-config[data-date]').attr('data-date');
+                if (!targetDateStr) {
+                    // 如果没有data-date属性，使用默认日期
+                    targetDateStr = '3/1/2023 00:00:00';
+                }
+                
+                var targetDate = new Date(targetDateStr);
+                var currentDate = new Date();
+                
+                // 计算年份差
+                var yearDiff = currentDate.getFullYear() - targetDate.getFullYear();
+                var monthDiff = currentDate.getMonth() - targetDate.getMonth();
+                var dayDiff = currentDate.getDate() - targetDate.getDate();
+                
+                // 调整年份差，考虑月份和日期
+                if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                    yearDiff--;
+                }
+                
+                // 格式化显示年份
+                var yearsDisplay = yearDiff < 10 ? '0' + yearDiff : yearDiff;
+                $('#timeYears').text(yearsDisplay);
+                
+                // 计算总天数差
+                var totalDaysDiff = Math.floor((currentDate - targetDate) / (1000 * 60 * 60 * 24));
+                var daysDisplay = totalDaysDiff < 100 ? (totalDaysDiff < 10 ? '00' + totalDaysDiff : '0' + totalDaysDiff) : totalDaysDiff;
+                $('#timeDate').text(daysDisplay);
+                
+                // 计算当前小时和分钟
+                var currentHours = currentDate.getHours();
+                var currentMinutes = currentDate.getMinutes();
+                
+                // 格式化显示小时和分钟
+                var hoursDisplay = currentHours < 10 ? '0' + currentHours : currentHours;
+                var minutesDisplay = currentMinutes < 10 ? '0' + currentMinutes : currentMinutes;
+                
+                $('#times').text(hoursDisplay);
+                $('#times2').text(minutesDisplay);
+            }
+            
+            // 初始更新时钟
+            updateClock();
+            
+            // 每分钟更新一次时钟
+            setInterval(updateClock, 60000);
+            
+            // 增强现代时钟的动画效果
+            function enhanceClockAnimation() {
+                // 为时间项添加轻微的呼吸效果
+                $('.time-item').each(function(index) {
+                    $(this).css({
+                        'animation': 'breath 4s ease-in-out infinite ' + (index * 0.3) + 's'
+                    });
+                });
+            }
+            
+            // 添加呼吸动画
+            var style = document.createElement('style');
+            style.textContent = `
+                @keyframes breath {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // 启动动画增强
+            enhanceClockAnimation();
+            
+            // 添加兼容性检查
+            if (!('backdropFilter' in document.documentElement.style) && !('-webkit-backdrop-filter' in document.documentElement.style)) {
+                // 为不支持backdrop-filter的浏览器添加替代样式
+                $('.modern-clock').css({
+                    'background': 'rgba(26, 26, 26, 0.9)',
+                    'border': '1px solid rgba(255, 255, 255, 0.08)'
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
