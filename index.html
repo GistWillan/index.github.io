@@ -199,7 +199,7 @@
             }
         }
         
-        /* 半透明毛玻璃暗色macOS风格窗口效果 */
+        /* 半透明毛玻璃暗色macOS风格窗口效果 - 增强版 */
         .modern-clock {
             background: rgba(26, 26, 26, 0.7);
             backdrop-filter: blur(12px);
@@ -208,11 +208,194 @@
             border-radius: 16px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .modern-clock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: all 0.8s ease;
+            z-index: 1;
         }
         
         .modern-clock:hover {
             box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .modern-clock:hover::before {
+            left: 100%;
+        }
+        
+        /* 时间项增强动画效果 */
+        .time-item {
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+        
+        .time-item:hover {
+            transform: translateZ(10px) scale(1.05);
+        }
+        
+        .time-item .digit {
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* 数字变化动画关键帧 */
+        @keyframes numberChange {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .number-animate {
+            animation: numberChange 0.5s ease;
+        }
+        
+        /* 页面加载动画 */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .page-loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* 鼠标跟随光效优化 */
+        .cursor-glow {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0) 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, opacity 0.2s;
+            opacity: 0.7;
+        }
+        
+        /* 增强的移动端响应式设计 */
+        @media (max-width: 768px) {
+            .modern-clock {
+                margin: 0 20px;
+                padding: 1.5rem;
+            }
+            
+            .time-display {
+                gap: 0.5rem;
+            }
+            
+            .time-item {
+                min-width: 70px;
+            }
+            
+            /* 移动端优化快速链接菜单 */
+            .quick-link {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .quick-link ul {
+                padding: 0;
+                margin: 0;
+            }
+            
+            .quick-link li {
+                margin: 5px 0;
+            }
+            
+            /* 移动端隐藏鼠标光效 */
+            .cursor-glow {
+                display: none;
+            }
+            
+            /* 移动端优化站点卡片布局 */
+            .site-links-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .site-card {
+                padding: 15px;
+            }
+            
+            .site-card h4 {
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modern-clock {
+                padding: 1rem;
+                margin: 0 10px;
+            }
+            
+            .domain-title {
+                font-size: 1.3rem;
+            }
+            
+            .time-item {
+                min-width: 60px;
+            }
+            
+            .time-item .digit {
+                font-size: 1.3rem;
+            }
+            
+            .site-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 修复字体加载问题 */
+        @font-face {
+            font-family: 'OpenSans';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Open Sans Bold'), local('OpenSans-Bold'),
+                 url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVc.ttf) format('truetype');
         }
     </style>
 
@@ -225,16 +408,25 @@
             days = (now - grt) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
             hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
             if (String(hnum).length == 1) { hnum = "0" + hnum; } minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-            mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; }
-            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            mnum = Math.floor(minutes); if (String(mnum).length == 1) { mnum = "0" + mnum; } seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
             snum = Math.round(seconds);
-            if (snum == 60) { snum = 0; }
-            if (String(snum).length == 1) { snum = "0" + snum; }
-            document.getElementById("timeDate").innerHTML = " " + dnum + " "; //天数
-            document.getElementById("times").innerHTML = hnum + " "; //小时
-            document.getElementById("times2").innerHTML = mnum + " "; //分
+            if (snum == 60) { snum = 0; } if (String(snum).length == 1) { snum = "0" + snum; }
+            
+            // 检查元素是否存在再设置innerHTML
+            var timeDateElem = document.getElementById("timeDate");
+            var timesElem = document.getElementById("times");
+            var times2Elem = document.getElementById("times2");
+            
+            if (timeDateElem) timeDateElem.innerHTML = " " + dnum + " "; //天数
+            if (timesElem) timesElem.innerHTML = hnum + " "; //小时
+            if (times2Elem) times2Elem.innerHTML = mnum + " "; //分
         }
-        setInterval("createtime()", 250);
+        
+        // 延迟设置定时器，确保DOM加载完成
+        setTimeout(function() {
+            setInterval(createtime, 250);
+            createtime(); // 立即执行一次
+        }, 1000);
     </script>
 </head>
 
@@ -259,24 +451,24 @@
     </header>
     <nav class="quick-link count-6 nav-left">
         <ul id="qmenu">
-            <li data-menuanchor="home">
-                <a href="#home">🎪</a>
+            <li data-menuanchor="home-section">
+                <a href="#s-home-section">🎪</a>
                 <span class="title">欢迎页面</span>
             </li>
-            <li data-menuanchor="when">
-                <a href="#when">🍰</a>
+            <li data-menuanchor="when-section">
+                <a href="#s-when-section">🍰</a>
                 <span class="title">吃蛋糕啦</span>
             </li>
-            <li data-menuanchor="register">
-                <a href="#register">🌏</a>
+            <li data-menuanchor="register-section">
+                <a href="#s-register-section">🌏</a>
                 <span class="title">站点一览</span>
             </li>
-            <li data-menuanchor="about-us">
-                <a href="#about-us">👒</a>
+            <li data-menuanchor="about-us-section">
+                <a href="#s-about-us-section">👒</a>
                 <span class="title">关于网站</span>
             </li>
-            <li data-menuanchor="contact">
-                <a href="#contact">📧</a>
+            <li data-menuanchor="contact-section">
+                <a href="#s-contact-section">📧</a>
                 <span class="title">联系</span>
             </li>
         </ul>
@@ -297,7 +489,7 @@
         <div class="cover-bg pos-abs full-size bg-color" data-bgcolor="rgba(51, 2, 48, 0.12)"></div>
     </div>
     <main class="page-main" id="mainpage">
-        <div class="section page-home page page-cent" id="s-home">
+        <div class="section page-home page page-cent" id="s-home-section">
             <div class="logo-container">
                 <img class="h-logo" src="images/logo_only.png" alt="Logo">
             </div>
@@ -319,7 +511,7 @@
                             <br> GistWillan
                         </h3>
                         <h4 class="subhead">
-                            <a href="#when">了解更多</a>
+                            <a href="#s-when-section">了解更多</a>
                         </h4>
                     </div>
                 </header>
@@ -334,7 +526,7 @@
                 </article>
             </div>
             <footer class="p-footer p-scrolldown">
-                <a href="#when">
+                <a href="#s-when-section">
                     <div class="arrow-d">
                         <div class="before">你&nbsp;是&nbsp;否</div>
                         <div class="after">在&nbsp;期&nbsp;待&nbsp;着</div>
@@ -343,7 +535,7 @@
                 </a>
             </footer>
         </div>
-        <div class="section page-when page page-cent" id="s-when">
+        <div class="section page-when page page-cent" id="s-when-section">
             <section class="content">
                 <div class="modern-clock">
                     <div class="site-config" data-date="3/1/2023 00:00:00" data-date-timezone="+0"></div>
@@ -375,7 +567,7 @@
                 </div>
             </section>
             <footer class="p-footer p-scrolldown">
-                <a href="#register">
+                <a href="#s-register-section">
                     <div class="arrow-d">
                         <div class="before">节&nbsp;日</div>
                         <div class="after">快&nbsp;乐</div>
@@ -384,7 +576,7 @@
                 </a>
             </footer>
         </div>
-        <div class="section page-register page page-cent " id="s-register">
+        <div class="section page-register page page-cent " id="s-register-section">
             <section class="content">
                 <header class="p-title">
                     <h3>
@@ -441,7 +633,7 @@
                 </div>
             </section>
             <footer class="p-footer p-scrolldown">
-                <a href="#about-us">
+                <a href="#s-about-us-section">
                     <div class="arrow-d">
                         <div class="before">GistWillan</div>
                         <div class="after">站&nbsp;点&nbsp;一&nbsp;览</div>
@@ -450,7 +642,7 @@
                 </a>
             </footer>
         </div>
-        <div class="section page-about page page-cent" id="s-about-us">
+        <div class="section page-about page page-cent" id="s-about-us-section">
             <section class="content">
                 <header class="p-title">
                     <h3>🍬 关于GistWillan的小站</h3>
@@ -473,7 +665,7 @@
                 </article>
             </section>
             <footer class="p-footer p-scrolldown">
-                <a href="#contact">
+                <a href="#s-contact-section">
                     <div class="arrow-d">
                         <div class="before"> </div>
                         <div class="after"> </div>
@@ -482,7 +674,7 @@
                 </a>
             </footer>
         </div>
-        <div class="section page-contact page page-cent" id="s-contact">
+        <div class="section page-contact page page-cent" id="s-contact-section">
             <section class="content">
                 <header class="p-title">
                     <h3>💖 联系</h3>
@@ -546,6 +738,16 @@
     <script src="js/form_script.js"></script>
     <script src="js/main.js"></script>
     
+    <!-- 页面加载完成后的淡出逻辑 -->
+     <script>
+         // 页面加载完成后淡出加载动画
+         $(window).on('load', function() {
+             setTimeout(function() {
+                 $('#pageLoader').addClass('fade-out');
+             }, 1000);
+         });
+     </script>
+    
     <!-- 现代时钟功能增强 -->
     <script>
         $(document).ready(function() {
@@ -576,12 +778,10 @@
                 
                 // 格式化显示年份
                 var yearsDisplay = yearDiff < 10 ? '0' + yearDiff : yearDiff;
-                $('#timeYears').text(yearsDisplay);
                 
                 // 计算总天数差
                 var totalDaysDiff = Math.floor((currentDate - targetDate) / (1000 * 60 * 60 * 24));
                 var daysDisplay = totalDaysDiff < 100 ? (totalDaysDiff < 10 ? '00' + totalDaysDiff : '0' + totalDaysDiff) : totalDaysDiff;
-                $('#timeDate').text(daysDisplay);
                 
                 // 计算当前小时和分钟
                 var currentHours = currentDate.getHours();
@@ -591,8 +791,30 @@
                 var hoursDisplay = currentHours < 10 ? '0' + currentHours : currentHours;
                 var minutesDisplay = currentMinutes < 10 ? '0' + currentMinutes : currentMinutes;
                 
-                $('#times').text(hoursDisplay);
-                $('#times2').text(minutesDisplay);
+                // 使用动画更新时钟显示
+                animateNumberChange('#timeYears', yearsDisplay);
+                animateNumberChange('#timeDate', daysDisplay);
+                animateNumberChange('#times', hoursDisplay);
+                animateNumberChange('#times2', minutesDisplay);
+            }
+            
+            // 数字变化动画函数
+            function animateNumberChange(selector, newValue) {
+                var element = $(selector);
+                var oldValue = element.text();
+                
+                if (oldValue !== newValue) {
+                    // 添加淡出效果
+                    element.css('opacity', '0');
+                    element.css('transform', 'scale(0.9)');
+                    
+                    // 短暂延迟后更新值并添加淡入效果
+                    setTimeout(function() {
+                        element.text(newValue);
+                        element.css('opacity', '1');
+                        element.css('transform', 'scale(1)');
+                    }, 300);
+                }
             }
             
             // 初始更新时钟
@@ -618,6 +840,41 @@
                     0%, 100% { transform: scale(1); }
                     50% { transform: scale(1.02); }
                 }
+                
+                /* 数字变化过渡动画 */
+                #timeYears, #timeDate, #times, #times2 {
+                    transition: all 0.3s ease;
+                }
+                
+                /* 页面元素淡入动画 */
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .section {
+                    animation: fadeInUp 0.8s ease-out forwards;
+                }
+                
+                /* 鼠标跟随光效 */
+                .cursor-glow {
+                    position: fixed;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    background: radial-gradient(circle, rgba(86,119,252,0.3) 0%, rgba(86,119,252,0) 70%);
+                    pointer-events: none;
+                    z-index: 9999;
+                    transform: translate(-50%, -50%);
+                    transition: width 0.3s, height 0.3s, opacity 0.3s;
+                    mix-blend-mode: screen;
+                }
             `;
             document.head.appendChild(style);
             
@@ -627,11 +884,50 @@
             // 添加兼容性检查
             if (!('backdropFilter' in document.documentElement.style) && !('-webkit-backdrop-filter' in document.documentElement.style)) {
                 // 为不支持backdrop-filter的浏览器添加替代样式
-                $('.modern-clock').css({
+                $('.modern-clock, .site-card').css({
                     'background': 'rgba(26, 26, 26, 0.9)',
                     'border': '1px solid rgba(255, 255, 255, 0.08)'
                 });
             }
+            
+            // 添加鼠标跟随光效
+            var cursorGlow = $('<div class="cursor-glow"></div>').appendTo('body');
+            
+            $(document).mousemove(function(e) {
+                cursorGlow.css({
+                    left: e.clientX,
+                    top: e.clientY
+                });
+            });
+            
+            // 鼠标悬停在交互元素上时增强光效
+            $('a, button, .site-card, .time-item').hover(
+                function() {
+                    cursorGlow.css({
+                        width: '80px',
+                        height: '80px',
+                        background: 'radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%)'
+                    });
+                },
+                function() {
+                    cursorGlow.css({
+                        width: '60px',
+                        height: '60px',
+                        background: 'radial-gradient(circle, rgba(86,119,252,0.3) 0%, rgba(86,119,252,0) 70%)'
+                    });
+                }
+            );
+            
+            // 页面滚动时添加视差效果
+            $(window).scroll(function() {
+                var scrollPosition = $(window).scrollTop();
+                $('.cover-bg').css('transform', 'translateY(' + scrollPosition * 0.5 + 'px)');
+            });
+            
+            // 为站点卡片添加随机的进入动画延迟
+            $('.site-card').each(function(index) {
+                $(this).css('animation-delay', (index * 0.1) + 's');
+            });
         });
     </script>
 </body>

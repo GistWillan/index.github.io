@@ -208,9 +208,29 @@ http://themeforest.net/licenses
 
 
  
+/* Fix left navigation positioning on mobile small screens */
+@media (max-width : 480px) {
+	/* 确保左侧导航栏定位在屏幕左侧的中间位置 */
+	.quick-link.nav-left {
+		position: fixed;
+		top: 50% !important;
+		left: 0;
+		margin-top: -144px !important; /* 48*6/2 - 保持与count-6对应的正确居中值 */
+		transform: translateY(-50%); /* 额外确保垂直居中 */
+		z-index: 100;
+	}
+}
+
+/* Additional fix for very small screens */
+@media (max-width : 360px) {
+	.quick-link.nav-left {
+		margin-top: -144px !important; /* 确保在极小屏幕上也保持正确的居中值 */
+	}
+}
+
 /* Responsive height */
 @media (max-height : 420px){
-	
+    
 	.page .content .clock {
 		transform: scale(0.4) translateX(-125%) translateY(-125%);
 		position: absolute;
